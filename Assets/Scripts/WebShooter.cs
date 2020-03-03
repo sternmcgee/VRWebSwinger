@@ -6,60 +6,56 @@ using Valve.VR;
 
 public class WebShooter : MonoBehaviour
 {
-    public float curledThreshold = 0.8f;
-    public float uncurledThreshold = 0.2f;
-    SteamVR_Behaviour_Skeleton skeleton = null;
-    private bool isShooting = false;
-    private bool shouldShoot = false;
-    private bool shouldGetCurls = true;
+    public float closedFingerAmount = 0.1f;
+    public float openFingerAmount = 0.9f;
+    private bool lastWebShootState = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shouldGetCurls)
+        for (int handIndex = 0; handIndex < Player.instance.hands.Length; handIndex++)
         {
-            StartCoroutine(GetCurls());
+            if (Player.instance.hands[handIndex] != null)
+            {
+                SteamVR_Behaviour_Skeleton skeleton = Player.instance.hands[handIndex].skeleton;
+                if (skeleton != null)
+                {
+                    //Debug.LogFormat("{0:0.00}, {1:0.00}, {2:0.00}, {3:0.00}, {4:0.00}", skeleton.thumbCurl, skeleton.indexCurl, skeleton.middleCurl, skeleton.ringCurl, skeleton.pinkyCurl);
+
+                    if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openFingerAmount &&
+                        skeleton.thumbCurl >= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
+                    {
+                        WebShootSignRecognized(true);
+                    }
+                    else
+                    {
+                        WebShootSignRecognized(false);
+                    }
+                }
+            }
         }
-        if (!isShooting)
+    }
+
+    private void WebShootSignRecognized(bool currentWebShootState)
+    {
+        if (lastWebShootState == false && currentWebShootState == true)
         {
-            StartCoroutine(ShootWeb());
-        }        
+            //shoot web
+        }
+
+        lastWebShootState = currentWebShootState;
     }
 
     private IEnumerator ShootWeb()
     {
-        isShooting = true;
-
         //implement webshooting here
-
         yield return new WaitForSeconds(1.0f);
-        isShooting = false;
-    }
-
-    private IEnumerator GetCurls()
-    {
-        shouldGetCurls = false;
-        //get finger curl array
-        float[] fingerCurls = skeleton.fingerCurls;
-        //are middle and ring finger only curled?
-        if (fingerCurls[2] > curledThreshold && fingerCurls[3] > curledThreshold && fingerCurls[0] < uncurledThreshold &&
-            fingerCurls[1] < uncurledThreshold && fingerCurls[4] < uncurledThreshold)
-        {
-            //should shoot web
-            shouldShoot = true;
-        }
-        else
-        {
-            shouldShoot = false;
-        }
-
-        yield return new WaitForSeconds(0.1f);
-        shouldGetCurls = true;
     }
 }
