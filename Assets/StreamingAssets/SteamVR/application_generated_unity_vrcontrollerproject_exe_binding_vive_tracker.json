@@ -1,0 +1,22 @@
+{
+   "action_manifest_version" : 0,
+   "alias_info" : {},
+   "app_key" : "application.generated.unity.vrcontrollerproject.exe",
+   "bindings" : {
+      "/actions/default" : {
+         "sources" : [
+            {
+               "inputs" : {},
+               "mode" : "none",
+               "path" : "/input/trigger"
+            }
+         ]
+      }
+   },
+   "category" : "steamvr_input",
+   "controller_type" : "vive_tracker",
+   "description" : "",
+   "name" : "My VRControllerProject [Testing] configuration for Vive Tracker",
+   "options" : {},
+   "simulated_actions" : []
+}
