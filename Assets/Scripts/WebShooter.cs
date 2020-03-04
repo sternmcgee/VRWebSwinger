@@ -6,10 +6,11 @@ using Valve.VR;
 
 public class WebShooter : MonoBehaviour
 {
-    public float closedFingerAmount = 0.1f;
-    public float openFingerAmount = 0.9f;
+    public float closedFingerAmount = 0.8f;
+    public float openFingerAmount = 0.2f;
+    public float openThumbAmount = 0.1f;
     private bool lastWebShootState = false;
-
+    private bool isOnCoolDown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class WebShooter : MonoBehaviour
                     //Debug.LogFormat("{0:0.00}, {1:0.00}, {2:0.00}, {3:0.00}, {4:0.00}", skeleton.thumbCurl, skeleton.indexCurl, skeleton.middleCurl, skeleton.ringCurl, skeleton.pinkyCurl);
 
                     if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openFingerAmount &&
-                        skeleton.thumbCurl >= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
+                        skeleton.thumbCurl <= openThumbAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
                     {
                         WebShootSignRecognized(true);
                     }
@@ -47,8 +48,12 @@ public class WebShooter : MonoBehaviour
     {
         if (lastWebShootState == false && currentWebShootState == true)
         {
-            Debug.Log("Web Shooting Gesture Recognized!");
+            //implement webshooting here
+            Debug.Log("Web was shot!");
+
             //shoot web
+            //if (!isOnCoolDown)
+            //    StartCoroutine(ShootWeb());
         }
 
         lastWebShootState = currentWebShootState;
@@ -56,7 +61,12 @@ public class WebShooter : MonoBehaviour
 
     private IEnumerator ShootWeb()
     {
+        isOnCoolDown = true;
+
         //implement webshooting here
-        yield return new WaitForSeconds(1.0f);
+        Debug.Log("Web was shot!");
+
+        yield return new WaitForSeconds(0.5f);
+        isOnCoolDown = false;
     }
 }
