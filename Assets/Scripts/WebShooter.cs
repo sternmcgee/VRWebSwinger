@@ -47,6 +47,7 @@ public class WebShooter : MonoBehaviour
     {
         if (lastWebShootState == false && currentWebShootState == true)
         {
+            Debug.Log("Web Shooting Gesture Recognized!");
             //shoot web
         }
 
