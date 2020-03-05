@@ -25678,7 +25678,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1893138400, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+    - {fileID: 1893138399, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
 --- !u!1 &1893138395 stripped
 GameObject:
@@ -25704,6 +25706,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1893138397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893138395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d22e027306ee6f4aa0689de8f27c24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedFingerAmount: 0.8
+  openFingerAmount: 0.2
+  openThumbAmount: 0.1
 --- !u!1 &1899902248
 GameObject:
   m_ObjectHideFlags: 0

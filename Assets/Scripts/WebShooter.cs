@@ -6,9 +6,9 @@ using Valve.VR;
 
 public class WebShooter : MonoBehaviour
 {
-    public float closedFingerAmount = 0.8f;
-    public float openFingerAmount = 0.2f;
-    public float openThumbAmount = 0.1f;
+    public float closedFingerAmount = 0.9f;
+    public float openFingerAmount = 0.1f;
+    public float openPinkyAmount = 0.4f;
     private bool lastWebShootState = false;
     private bool isOnCoolDown = false;
 
@@ -30,8 +30,8 @@ public class WebShooter : MonoBehaviour
                 {
                     //Debug.LogFormat("{0:0.00}, {1:0.00}, {2:0.00}, {3:0.00}, {4:0.00}", skeleton.thumbCurl, skeleton.indexCurl, skeleton.middleCurl, skeleton.ringCurl, skeleton.pinkyCurl);
 
-                    if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openFingerAmount &&
-                        skeleton.thumbCurl <= openThumbAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
+                    if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openPinkyAmount &&
+                        skeleton.thumbCurl <= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
                     {
                         WebShootSignRecognized(true);
                     }
