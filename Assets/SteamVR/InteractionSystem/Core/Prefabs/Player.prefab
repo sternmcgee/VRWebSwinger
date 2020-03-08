@@ -220,6 +220,8 @@ GameObject:
   - component: {fileID: 447954}
   - component: {fileID: 11465950}
   - component: {fileID: 1893138396}
+  - component: {fileID: 4303370534206956911}
+  - component: {fileID: 1893138397}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -300,6 +302,39 @@ MonoBehaviour:
   speed: 0
   leftHand: {fileID: 144230}
   rightHand: {fileID: 160596}
+--- !u!143 &4303370534206956911
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1893138397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d22e027306ee6f4aa0689de8f27c24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedFingerAmount: 0.8
+  openFingerAmount: 0.2
+  openPinkyAmount: 0.4
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +613,7 @@ GameObject:
   - component: {fileID: 2014920}
   - component: {fileID: 11450526}
   - component: {fileID: 12440092}
+  - component: {fileID: 773389583}
   m_Layer: 0
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -662,6 +698,21 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125964}
   m_Enabled: 1
+--- !u!114 &773389583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 0}
+  _ears: {fileID: 0}
+  wireframe: 0
 --- !u!1 &129006
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +949,6 @@ GameObject:
   - component: {fileID: 11450312}
   - component: {fileID: 114000011273627542}
   - component: {fileID: 114000011734077242}
-  - component: {fileID: 1893138400}
   m_Layer: 26
   m_Name: LeftHand
   m_TagString: Untagged
@@ -1028,20 +1078,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967039
   hand: {fileID: 0}
---- !u!114 &1893138400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d22e027306ee6f4aa0689de8f27c24a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closedFingerAmount: 0.1
-  openFingerAmount: 0.9
 --- !u!1 &160596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,7 +1090,6 @@ GameObject:
   - component: {fileID: 11401046}
   - component: {fileID: 114000011957598740}
   - component: {fileID: 114000010591715100}
-  - component: {fileID: 1893138399}
   m_Layer: 26
   m_Name: RightHand
   m_TagString: Untagged
@@ -1184,20 +1219,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967039
   hand: {fileID: 0}
---- !u!114 &1893138399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d22e027306ee6f4aa0689de8f27c24a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closedFingerAmount: 0.1
-  openFingerAmount: 0.9
 --- !u!1 &165334
 GameObject:
   m_ObjectHideFlags: 0
