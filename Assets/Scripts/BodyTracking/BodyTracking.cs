@@ -57,7 +57,7 @@ public class BodyTracking : MonoBehaviour
             {
                 Hips.transform.rotation =Quaternion.RotateTowards(Hips.transform.rotation, Quaternion.Euler(0, Quaternion.LookRotation(BodyRoot.transform.position - PastPos).eulerAngles.y, 0) * HipOffsetRot,3);
                 FeetRoot.rotation = Quaternion.RotateTowards(FeetRoot.rotation, Quaternion.Euler(0, Quaternion.LookRotation(BodyRoot.transform.position - PastPos).eulerAngles.y, 0), 3) ;
-                if (CameraRig.GetComponent<PlayerMovement>().TouchingGround)
+                if (CameraRig.GetComponent<Player>().TouchingGround)
                 {
                     FeetRoot.GetComponent<FootMovment>().WalkM((BodyRoot.transform.position - PastPos).magnitude);
                 }
@@ -66,7 +66,7 @@ public class BodyTracking : MonoBehaviour
             {
                 Hips.transform.rotation = Quaternion.RotateTowards(Hips.transform.rotation, Quaternion.Euler(0, Quaternion.LookRotation(-(BodyRoot.transform.position - PastPos)).eulerAngles.y, 0) * HipOffsetRot,3);
                 FeetRoot.rotation = Quaternion.RotateTowards(FeetRoot.rotation, Quaternion.Euler(0, Quaternion.LookRotation(-(BodyRoot.transform.position - PastPos)).eulerAngles.y, 0),3);
-                if (CameraRig.GetComponent<PlayerMovement>().TouchingGround)
+                if (CameraRig.GetComponent<Player>().TouchingGround)
                 {
                     FeetRoot.GetComponent<FootMovment>().WalkM(-(BodyRoot.transform.position - PastPos).magnitude);
                 }

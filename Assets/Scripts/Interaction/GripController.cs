@@ -56,28 +56,28 @@ public class GripController : MonoBehaviour
             {
                 Release();
             }
-            //if(PreviewSkeleton)
-            //    PreviewSkeleton.transform.gameObject.SetActive(false);
+            if(PreviewSkeleton)
+                PreviewSkeleton.transform.gameObject.SetActive(false);
         }
         else
         {
-            //if (grabber.ClosestGrabbable() && PreviewSkeleton)
-            //{
-            //    PreviewSkeleton.transform.gameObject.SetActive(true);
-            //    OffsetObject = grabber.ClosestGrabbable().transform;
-            //    if (grabber.ClosestGrabbable().GetComponent<SteamVR_Skeleton_Poser>())
-            //    {
-            //        if (!OffsetObject.GetComponent<GrabPoint>().Gripped)
-            //        {
-            //            PreviewSkeleton.transform.SetParent(OffsetObject, false);
-            //            PreviewSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    PreviewSkeleton.transform.gameObject.SetActive(false);
-            //}
+            if (grabber.ClosestGrabbable() && PreviewSkeleton)
+            {
+                PreviewSkeleton.transform.gameObject.SetActive(true);
+                OffsetObject = grabber.ClosestGrabbable().transform;
+                if (grabber.ClosestGrabbable().GetComponent<SteamVR_Skeleton_Poser>())
+                {
+                    if (!OffsetObject.GetComponent<GrabPoint>().Gripped)
+                    {
+                        PreviewSkeleton.transform.SetParent(OffsetObject, false);
+                        PreviewSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
+                    }
+                }
+            }
+            else
+            {
+                PreviewSkeleton.transform.gameObject.SetActive(false);
+            }
             if (ToggleGripButton.GetStateDown(Hand))
             {
                 Grip();
@@ -116,11 +116,11 @@ public class GripController : MonoBehaviour
                     ConnectedObject.GetComponent<Interactable>().GrippedBy = transform.parent.gameObject;
                 }
             }
-            //if (OffsetObject.GetComponent<SteamVR_Skeleton_Poser>()&&HandSkeleton)
-            //{
-            //    HandSkeleton.transform.SetParent(OffsetObject, false);
-            //    HandSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
-            //}
+            if (OffsetObject.GetComponent<SteamVR_Skeleton_Poser>()&&HandSkeleton)
+            {
+                HandSkeleton.transform.SetParent(OffsetObject, false);
+                HandSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
+            }
 
 
         }
@@ -147,11 +147,11 @@ public class GripController : MonoBehaviour
         }
         
         ConnectedObject = null;
-        //if (OffsetObject.GetComponent<SteamVR_Skeleton_Poser>() && HandSkeleton)
-        //{
-        //    HandSkeleton.transform.SetParent(transform, false);
-        //    HandSkeleton.BlendToSkeleton();
-        //}
+        if (OffsetObject.GetComponent<SteamVR_Skeleton_Poser>() && HandSkeleton)
+        {
+            HandSkeleton.transform.SetParent(transform, false);
+            HandSkeleton.BlendToSkeleton();
+        }
         OffsetObject.GetComponent<GrabPoint>().Gripped = false;
         OffsetObject = null;
     }

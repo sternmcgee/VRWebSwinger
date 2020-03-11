@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
-using Valve.VR.InteractionSystem;
 
 public class VRController : MonoBehaviour
 {
@@ -21,7 +20,6 @@ public class VRController : MonoBehaviour
     public GameObject rightHand = null;
 
     private CharacterController characterController = null;
-    public CapsuleCollider playerCollider = null;
     private Transform cameraRig = null;
     private Transform head = null;
     private float prevDistance = 0f;
@@ -54,12 +52,12 @@ public class VRController : MonoBehaviour
     {
         // get the head in local space
         float headHeight = Mathf.Clamp(head.localPosition.y, 1, 2);
-        playerCollider.height = headHeight;
+        characterController.height = headHeight;
 
         // calculate capsule height
         Vector3 newCenter = Vector3.zero;
-        newCenter.y = playerCollider.height / 2;
-        //newCenter.y += playerCollider.radius;
+        newCenter.y = characterController.height / 2;
+        newCenter.y += characterController.skinWidth;
         newCenter.y += cameraRig.localPosition.y;
 
         // move capsule in local space
@@ -67,7 +65,7 @@ public class VRController : MonoBehaviour
         newCenter.z = head.localPosition.z;
 
         // apply
-        playerCollider.center = newCenter;
+        characterController.center = newCenter;
     }
 
     private void CalculateMovement()
@@ -117,7 +115,6 @@ public class VRController : MonoBehaviour
         movement.y -= gravity * Time.deltaTime;
 
         // apply
-        Player.instance.GetComponent<Rigidbody>().AddForce(movement * Time.deltaTime);
-        //characterController.Move(movement * Time.deltaTime);
+        characterController.Move(movement * Time.deltaTime);
     }
 }
