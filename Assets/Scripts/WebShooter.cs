@@ -21,27 +21,27 @@ public class WebShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int handIndex = 0; handIndex < Player.instance.hands.Length; handIndex++)
-        {
-            if (Player.instance.hands[handIndex] != null)
-            {
-                SteamVR_Behaviour_Skeleton skeleton = Player.instance.hands[handIndex].skeleton;
-                if (skeleton != null)
-                {
-                    //Debug.LogFormat("{0:0.00}, {1:0.00}, {2:0.00}, {3:0.00}, {4:0.00}", skeleton.thumbCurl, skeleton.indexCurl, skeleton.middleCurl, skeleton.ringCurl, skeleton.pinkyCurl);
+        //for (int handIndex = 0; handIndex < Player.instance.hands.Length; handIndex++)
+        //{
+        //    if (Player.instance.hands[handIndex] != null)
+        //    {
+        //        SteamVR_Behaviour_Skeleton skeleton = Player.instance.hands[handIndex].skeleton;
+        //        if (skeleton != null)
+        //        {
+        //            //Debug.LogFormat("{0:0.00}, {1:0.00}, {2:0.00}, {3:0.00}, {4:0.00}", skeleton.thumbCurl, skeleton.indexCurl, skeleton.middleCurl, skeleton.ringCurl, skeleton.pinkyCurl);
 
-                    if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openPinkyAmount &&
-                        skeleton.thumbCurl <= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
-                    {
-                        WebShootSignRecognized(true);
-                    }
-                    else
-                    {
-                        WebShootSignRecognized(false);
-                    }
-                }
-            }
-        }
+        //            if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openPinkyAmount &&
+        //                skeleton.thumbCurl <= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
+        //            {
+        //                WebShootSignRecognized(true);
+        //            }
+        //            else
+        //            {
+        //                WebShootSignRecognized(false);
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private void WebShootSignRecognized(bool currentWebShootState)
