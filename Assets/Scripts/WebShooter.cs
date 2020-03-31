@@ -10,63 +10,53 @@ public class WebShooter : MonoBehaviour
     public float openFingerAmount = 0.1f;
     public float openPinkyAmount = 0.4f;
     private bool lastWebShootState = false;
-    private bool isOnCoolDown = false;
+    public Hand webHand = null;
+    public bool shootActionState = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (webHand == null)
+            Debug.LogError("Error: Web Hand reference not assigned on the WebShooter instance.");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //for (int handIndex = 0; handIndex < Player.instance.hands.Length; handIndex++)
-        //{
-        //    if (Player.instance.hands[handIndex] != null)
-        //    {
-        //        SteamVR_Behaviour_Skeleton skeleton = Player.instance.hands[handIndex].skeleton;
-        //        if (skeleton != null)
-        //        {
-        //            //Debug.LogFormat("{0:0.00}, {1:0.00}, {2:0.00}, {3:0.00}, {4:0.00}", skeleton.thumbCurl, skeleton.indexCurl, skeleton.middleCurl, skeleton.ringCurl, skeleton.pinkyCurl);
-
-        //            if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openPinkyAmount &&
-        //                skeleton.thumbCurl <= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
-        //            {
-        //                WebShootSignRecognized(true);
-        //            }
-        //            else
-        //            {
-        //                WebShootSignRecognized(false);
-        //            }
-        //        }
-        //    }
-        //}
+        if (webHand != null)
+        {
+            SteamVR_Behaviour_Skeleton skeleton = webHand.skeleton;
+            if (skeleton != null)
+            {
+                if ((skeleton.indexCurl <= openFingerAmount && skeleton.pinkyCurl <= openPinkyAmount && skeleton.thumbCurl <= openFingerAmount) && (skeleton.ringCurl >= closedFingerAmount && skeleton.middleCurl >= closedFingerAmount))
+                {
+                    WebShootSignRecognized(true);
+                }
+                else
+                {
+                    WebShootSignRecognized(false);
+                }
+            }
+        }
     }
 
     private void WebShootSignRecognized(bool currentWebShootState)
     {
         if (lastWebShootState == false && currentWebShootState == true)
         {
-            //implement webshooting here
             Debug.Log("Web was shot!");
 
-            //shoot web
-            //if (!isOnCoolDown)
-            //    StartCoroutine(ShootWeb());
+            //send shoot web event           
+            shootActionState = true;
+        }
+        if (lastWebShootState == true && currentWebShootState == false)
+        {
+            Debug.Log("Web was released!");
+
+            //send release web event
+            shootActionState = false;
         }
 
         lastWebShootState = currentWebShootState;
-    }
-
-    private IEnumerator ShootWeb()
-    {
-        isOnCoolDown = true;
-
-        //implement webshooting here
-        Debug.Log("Web was shot!");
-
-        yield return new WaitForSeconds(0.5f);
-        isOnCoolDown = false;
     }
 }
