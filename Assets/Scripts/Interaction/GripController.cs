@@ -52,10 +52,10 @@ public class GripController : MonoBehaviour
                 grabber.StrongGrip.connectedBody = null;
                 grabber.WeakGrip.connectedBody = ConnectedObject.GetComponent<Rigidbody>();
             }
-            if (ToggleGripButton.GetStateUp(Hand))
-            {
-                Release();
-            }
+            //if (ToggleGripButton.GetStateUp(Hand))
+            //{
+            //    Release();
+            //}
             if(PreviewSkeleton)
                 PreviewSkeleton.transform.gameObject.SetActive(false);
         }
@@ -70,7 +70,7 @@ public class GripController : MonoBehaviour
                     if (!OffsetObject.GetComponent<GrabPoint>().Gripped)
                     {
                         PreviewSkeleton.transform.SetParent(OffsetObject, false);
-                        PreviewSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
+                        //PreviewSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
                     }
                 }
             }
@@ -119,7 +119,7 @@ public class GripController : MonoBehaviour
             if (OffsetObject.GetComponent<SteamVR_Skeleton_Poser>()&&HandSkeleton)
             {
                 HandSkeleton.transform.SetParent(OffsetObject, false);
-                HandSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
+                //HandSkeleton.BlendToPoser(OffsetObject.GetComponent<SteamVR_Skeleton_Poser>(), 0f);
             }
 
 
