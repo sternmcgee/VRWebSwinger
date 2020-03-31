@@ -50,12 +50,12 @@ public class PlayerMovement : MonoBehaviour
                 }
                 RBody.AddForce(moveDirection.x * MovementSpeed-RBody.velocity.x, 0, moveDirection.z * MovementSpeed-RBody.velocity.z, ForceMode.VelocityChange);
 
-                Debug.Log("Velocity" + moveDirection);
-                Debug.Log("Movement Direction:" + moveDirection);
+                //Debug.Log("Velocity" + moveDirection);
+                //Debug.Log("Movement Direction:" + moveDirection);
             }
             else
             {
-                Debug.Log((moveDirection.x * MovementSpeed / (Mathf.Sqrt(2 * jumpHeight * 9.81f) / (9.81f))*Time.fixedDeltaTime, 0, moveDirection.z * MovementSpeed / (Mathf.Sqrt(2 * jumpHeight * 9.81f) / (9.81f)) * Time.fixedDeltaTime));
+                //Debug.Log((moveDirection.x * MovementSpeed / (Mathf.Sqrt(2 * jumpHeight * 9.81f) / (9.81f))*Time.fixedDeltaTime, 0, moveDirection.z * MovementSpeed / (Mathf.Sqrt(2 * jumpHeight * 9.81f) / (9.81f)) * Time.fixedDeltaTime));
                 RBody.AddForce(moveDirection.x*MovementSpeed/( Mathf.Sqrt(2 * jumpHeight * 9.81f)/(9.81f)) * Time.fixedDeltaTime, 0, moveDirection.z *MovementSpeed/ (Mathf.Sqrt(2 * jumpHeight * 9.81f) / (9.81f)) * Time.fixedDeltaTime, ForceMode.VelocityChange);
             }
         }
