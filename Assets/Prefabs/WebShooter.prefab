@@ -746,12 +746,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d542423049a1f45856bf98ac5ecbc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: 100
+  BulletSpeed: 250
   Rope: {fileID: 713283375062372422}
   ActiveHook: {fileID: 713283374268012960}
   StaticHook: {fileID: 1192208234723161675}
   ConnectionPoint: {fileID: 713283374555665809}
-  webShooter: {fileID: 5462891128353595837}
+  webShooter: {fileID: 0}
   closedFingerAmount: 0.7
   openFingerAmount: 0.3
   openPinkyAmount: 0.4
@@ -878,7 +878,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 713283374141870101}
-  - component: {fileID: 5462891128353595837}
   m_Layer: 0
   m_Name: WebShooter
   m_TagString: Untagged
@@ -902,24 +901,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5462891128353595837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713283374141870102}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d22e027306ee6f4aa0689de8f27c24a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  closedFingerAmount: 0.9
-  openFingerAmount: 0.1
-  openPinkyAmount: 0.4
-  grabbingHand: {fileID: 0}
-  shootStateUp: 0
-  shootStateDown: 0
 --- !u!1 &713283374167140445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1072,7 @@ MonoBehaviour:
   attached: 0
   retracting: 0
   retractionPoint: {fileID: 713283374555665809}
-  RetractionSpeed: 0.1
+  RetractionSpeed: 0.15
   Gun: {fileID: 713283374055349371}
 --- !u!54 &713283374268012970
 Rigidbody:
@@ -1621,8 +1602,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713283375062372422}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.0030024052, z: 0.18395}
-  m_LocalScale: {x: 0.01, y: 0.04184997, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0.0030024052, z: 0.18395996}
+  m_LocalScale: {x: 0.01, y: 0.04184723, z: 0.01}
   m_Children: []
   m_Father: {fileID: 713283374055349370}
   m_RootOrder: 0
@@ -5866,15 +5847,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4404832294231857452, guid: b727c35e82f905241b3f56e0a1518fdd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b727c35e82f905241b3f56e0a1518fdd, type: 3}
---- !u!1 &543575938101080920 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1039553183039551222, guid: b727c35e82f905241b3f56e0a1518fdd,
-    type: 3}
-  m_PrefabInstance: {fileID: 713283374525187502}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543575938101080921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1039553183039551223, guid: b727c35e82f905241b3f56e0a1518fdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 713283374525187502}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &543575938101080920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1039553183039551222, guid: b727c35e82f905241b3f56e0a1518fdd,
     type: 3}
   m_PrefabInstance: {fileID: 713283374525187502}
   m_PrefabAsset: {fileID: 0}
